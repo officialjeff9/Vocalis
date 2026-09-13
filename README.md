@@ -2,7 +2,7 @@
 
 Vocalis is a real-time AI voice coach that live-analyzes your pacing, energy, and presence to deliver targeted nudges that measurably improve your delivery in high-stakes professional scenarios.
 
-Built for the AWS Hackathon on Devpost.
+Agents for Humans Hackathon on Devpost.
 
 ## 🚀 Features
 
