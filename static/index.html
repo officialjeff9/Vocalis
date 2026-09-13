@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vocalis — Your AI communication coach</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">
+      <span class="logo-mark">V</span>
+      <span class="logo-name">Vocalis</span>
+    </div>
+    <div class="tagline">Your AI communication coach</div>
+  </header>
+
+  <main class="app">
+    <!-- Home -->
+    <section id="home-view" class="view active">
+      <h1 class="hero-title">Practice. <span>Get coached.</span> Improve.</h1>
+      <p class="hero-sub">
+        Pick a high-stakes scenario. A real coaching agent will ask you a question,
+        measure your delivery live, pick the one thing holding you back, and coach you
+        until you're stronger.
+      </p>
+      <div id="scenario-cards" class="scenario-grid"></div>
+    </section>
+
+    <!-- Session -->
+    <section id="session-view" class="view">
+      <div class="session-head">
+        <button id="home-btn" class="ghost-btn">Change scenario</button>
+        <span id="scenario-title" class="scenario-title"></span>
+        <span id="attempt-badge" class="attempt-badge"></span>
+      </div>
+
+      <div id="question-card" class="question-card hidden">
+        <div class="q-label">Your question</div>
+        <p id="question-text"></p>
+      </div>
+
+      <div id="record-block" class="record-block">
+        <div id="rec-ring" class="rec-ring">
+          <button id="record-btn" class="record-btn" aria-label="Record answer" disabled>
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+              <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3z"/>
+              <path d="M17 11a1 1 0 0 0-2 0 3 3 0 0 1-6 0 1 1 0 0 0-2 0 5 5 0 0 0 4 4.9V18a1 1 0 0 0 2 0v-2.1A5 5 0 0 0 17 11z"/>
+            </svg>
+            <span id="record-label">Start record</span>
+          </button>
+        </div>
+        <div id="rec-status" class="rec-status">Waiting for your question…</div>
+        <div id="drafting" class="drafting hidden">
+          <div class="spinner"></div>
+          <span id="drafting-text">Waiting for your question…</span>
+        </div>
+        <div id="elapsed" class="elapsed hidden">0:00</div>
+      </div>
+
+      <!-- Live metrics + AI coach -->
+      <div id="live-grid" class="metric-grid">
+        <div class="tile" data-k="pace">
+          <div class="tile-label">Pace</div>
+          <div class="tile-value"><span id="m-pace">—</span><span class="unit">wpm</span><span id="d-pace" class="live-delta"></span></div>
+          <div class="tile-bar"><div id="b-pace" class="bar-fill"></div></div>
+        </div>
+        <div class="tile" data-k="fillers">
+          <div class="tile-label">Fillers</div>
+          <div class="tile-value"><span id="m-fillers">—</span><span class="unit">/min</span></div>
+          <div class="tile-bar"><div id="b-fillers" class="bar-fill"></div></div>
+        </div>
+        <div class="tile" data-k="energy">
+          <div class="tile-label">Energy</div>
+          <div class="tile-sub">vocal vitality</div>
+          <div class="tile-value"><span id="m-energy">—</span><span class="unit">/100</span><span id="d-energy" class="live-delta"></span></div>
+          <div class="tile-bar"><div id="b-energy" class="bar-fill"></div></div>
+        </div>
+        <div class="tile" data-k="pauses">
+          <div class="tile-label">Time paused</div>
+          <div class="tile-value"><span id="m-pauses">—</span><span id="d-pauses" class="live-delta"></span></div>
+          <div class="tile-sub" id="m-pauses-sub"></div>
+          <div class="tile-bar"><div id="b-pauses" class="bar-fill"></div></div>
+        </div>
+        <div class="tile" data-k="presence">
+          <div class="tile-label">Delivery Presence</div>
+          <div class="tile-sub">command &amp; composure</div>
+          <div class="tile-value"><span id="m-presence">—</span><span class="unit">/100</span><span id="d-presence" class="live-delta"></span></div>
+          <div class="tile-bar"><div id="b-presence" class="bar-fill"></div></div>
+        </div>
+        <div id="live-tip" class="tile tile-tip">
+          <div class="tile-label">AI Coach</div>
+          <div id="tip-text" class="tip-text">Listening — I'll nudge you live.</div>
+        </div>
+      </div>
+
+      <div id="analyzing" class="analyzing hidden">
+        <div class="spinner"></div>
+        <p>Analyzing your delivery…</p>
+      </div>
+
+      <div id="result-block" class="hidden"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <div id="conn-banner" class="conn-banner hidden">Connection lost — reconnecting…</div>
+
+  <script src="/static/app.js?v=20260913.1"></script>
+</body>
+</html>

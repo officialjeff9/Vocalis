@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+strands-agents[ollama]
+assemblyai
+librosa
+websockets
+sounddevice
+numpy
